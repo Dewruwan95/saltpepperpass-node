@@ -1,6 +1,6 @@
 {
   "name": "saltpepperpass-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "saltpepperpass-node is a Node.js package that securely hashes passwords using bcrypt with customizable salt length, pepper text, and hashing rounds. It enhances password security by salting and peppering before hashing, making it ideal for backend applications.",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

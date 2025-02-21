@@ -11,11 +11,6 @@ export default function generateHash(
   password: TGenerateHashProps
 ): TGenerateHashResult {
   // check if the environment variables are defined
-  if (!process.env.SALTING_TEXT_LENGTH) {
-    throw new Error(
-      "SALTING_TEXT_LENGTH is not defined! Please set it in the .env file."
-    );
-  }
 
   if (!process.env.PEPPER_TEXT) {
     throw new Error(
@@ -23,16 +18,10 @@ export default function generateHash(
     );
   }
 
-  if (!process.env.HASHING_ROUNDS) {
-    throw new Error(
-      "HASHING_ROUNDS is not defined! Please set it in the .env file."
-    );
-  }
-
   // Load environment variables from .env file
-  const saltLength = parseInt(process.env.SALTING_TEXT_LENGTH, 10);
+  const saltLength = parseInt(process.env.SALTING_TEXT_LENGTH || "5", 10);
   const pepperText = process.env.PEPPER_TEXT;
-  const hashingRounds = parseInt(process.env.HASHING_ROUNDS, 10);
+  const hashingRounds = parseInt(process.env.HASHING_ROUNDS || "10", 10);
 
   // Generate a salt based on the configured length
   const salt = generateSaltingText(saltLength);
